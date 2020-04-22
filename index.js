@@ -1,8 +1,10 @@
 function fetchBooks() {
   return fetch('https://anapioficeandfire.com/api/books')
   .then(response => response.json())
-  .then(json => renderBooks(json))
-  //.then(json => fifthBook(json))
+  .then(json => {
+    renderBooks(json)
+    fifthBook(json)
+  })
 }
 
 function renderBooks(json) {
@@ -19,13 +21,13 @@ function renderBooks(json) {
 
 // this function identifies the fifth book and returns the title
 
-// function fifthBook(json) {
-//   const main = document.querySelector('main')
-//   const h2 = document.createElement('h2')
-//   let bookName = json[4]["name"]
-//   h2.innerText = `${bookName}`
-//   main.appendChild(h2)
-// }
+function fifthBook(json) {
+  const main = document.querySelector('main')
+  const h2 = document.createElement('h2')
+  let bookName = json[4]["name"]
+  h2.innerText = `5. ${bookName}`
+  main.appendChild(h2)
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   fetchBooks()
